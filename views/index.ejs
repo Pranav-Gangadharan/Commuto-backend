@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Reset Password</title>
+		<script>
+			let status = '<%- JSON.stringify(status) %>';
+			if (JSON.parse(status) === 'verified') {
+				if (confirm('Do you want to Login?')) {
+					window.location.href = 'http://localhost:5173/login';
+				}
+			}
+
+			// Function to validate the form
+			function validateForm() {
+				const password = document.getElementById('password').value;
+				const confirmPassword =
+					document.getElementById('confirm-password').value;
+
+				if (password !== confirmPassword) {
+					alert('Password and Confirm Password do not match.');
+					return false;
+				}
+
+				// Continue with form submission
+				return true;
+			}
+		</script>
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #f8f9fa;
+			}
+
+			.container {
+				width: 400px;
+				padding: 20px;
+				background-color: #ffffff;
+				border-radius: 15px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.form-group {
+				margin-bottom: 1rem;
+			}
+
+			.form-group label {
+				margin-bottom: 0.5rem;
+				font-size: 25px;
+				display: block;
+			}
+
+			input {
+				padding: 15px;
+				width: 90%;
+				border: 0.5px solid blueviolet;
+				border-radius: 25px;
+				font-size: 16px;
+				outline: none;
+			}
+
+			.btn-primary {
+				margin-top: 1rem;
+				padding: 1rem;
+				background-color: blueviolet;
+				border: 1px solid blueviolet;
+				border-radius: 10px;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form action="" method="post" onsubmit="return validateForm()">
+				<div class="form-group">
+					<label for="password">New Password</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Enter new password"
+					/>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm-password">Confirm Password</label>
+					<input
+						type="password"
+						name="confirm-password"
+						id="confirm-password"
+						placeholder="Enter Confirm password"
+					/>
+				</div>
+
+				<button class="btn-primary" type="submit">Reset Password</button>
+			</form>
+		</div>
+	</body>
+</html>
