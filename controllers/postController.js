@@ -141,10 +141,6 @@ export const getComments = async (req, res, next) => {
         path: "userId",
         select: "firstName lastName location profileUrl -password",
       })
-      // .populate({
-      //   path: "replies.userId",
-      //   select: "firstName lastName location profileUrl -password",
-      // })
       .sort({ _id: -1 });
 
     res.status(200).json({
