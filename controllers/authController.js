@@ -24,8 +24,10 @@ export const register = async (req, res, next) => {
       firstName, lastName, email, password: hashedPassword
     });
 
-
-
+    res.status(201).json({
+      succes: true,
+      message: "User Created Successfull"
+    });
 
   } catch (error) {
     console.log(error);
